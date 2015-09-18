@@ -26,20 +26,6 @@ Software Foundation, 51 Franklin Street - Fifth Floor, Boston, MA 02110-1301, US
 #include <stdlib.h>
 #include <stdint.h>
 
-/* RVC fields. */
-
-#define OP_MASK_CRS2 0x1f
-#define OP_SH_CRS2 2
-#define OP_MASK_CRS1S 0x7
-#define OP_SH_CRS1S 7
-#define OP_MASK_CRS2S 0x7
-#define OP_SH_CRS2S 2
-
-static const char rvc_rs1_regmap[8] = { 20, 21, 2, 3, 4, 5, 6, 7 };
-#define rvc_rd_regmap rvc_rs1_regmap
-#define rvc_rs2b_regmap rvc_rs1_regmap
-static const char rvc_rs2_regmap[8] = { 20, 21, 2, 3, 4, 5, 6, 0 };
-
 typedef uint64_t insn_t;
 
 static inline unsigned int riscv_insn_length (insn_t insn)
@@ -183,7 +169,22 @@ static const char * const riscv_pred_succ[16] = {
 #define RISCV_PCREL_HIGH_PART(VALUE, PC) RISCV_CONST_HIGH_PART((VALUE) - (PC))
 #define RISCV_PCREL_LOW_PART(VALUE, PC) RISCV_CONST_LOW_PART((VALUE) - (PC))
 
-/* RV fields */
+#define RISCV_JUMP_BITS RISCV_BIGIMM_BITS
+#define RISCV_JUMP_ALIGN_BITS 1
+#define RISCV_JUMP_ALIGN (1 << RISCV_JUMP_ALIGN_BITS)
+#define RISCV_JUMP_REACH ((1ULL << RISCV_JUMP_BITS) * RISCV_JUMP_ALIGN)
+
+#define RISCV_IMM_BITS 12
+#define RISCV_BIGIMM_BITS (32 - RISCV_IMM_BITS)
+#define RISCV_IMM_REACH (1LL << RISCV_IMM_BITS)
+#define RISCV_BIGIMM_REACH (1LL << RISCV_BIGIMM_BITS)
+#define RISCV_RVC_IMM_REACH (1LL << 6)
+#define RISCV_BRANCH_BITS RISCV_IMM_BITS
+#define RISCV_BRANCH_ALIGN_BITS RISCV_JUMP_ALIGN_BITS
+#define RISCV_BRANCH_ALIGN (1 << RISCV_BRANCH_ALIGN_BITS)
+#define RISCV_BRANCH_REACH (RISCV_IMM_REACH * RISCV_BRANCH_ALIGN)
+
+/* RV fields.  */
 
 #define OP_MASK_OP		0x7f
 #define OP_SH_OP		0
@@ -239,6 +240,17 @@ static const char * const riscv_pred_succ[16] = {
 #define OP_MASK_CSR		0xfff
 #define OP_SH_CSR		20
 
+/* RVC fields.  */
+
+#define OP_MASK_CRS2 0x1f
+#define OP_SH_CRS2 2
+#define OP_MASK_CRS1S 0x7
+#define OP_SH_CRS1S 7
+#define OP_MASK_CRS2S 0x7
+#define OP_SH_CRS2S 2
+
+/* ABI names for selected x-registers.  */
+
 #define X_RA 1
 #define X_SP 2
 #define X_GP 3
@@ -250,21 +262,6 @@ static const char * const riscv_pred_succ[16] = {
 
 #define NGPR 32
 #define NFPR 32
-
-#define RISCV_JUMP_BITS RISCV_BIGIMM_BITS
-#define RISCV_JUMP_ALIGN_BITS 1
-#define RISCV_JUMP_ALIGN (1 << RISCV_JUMP_ALIGN_BITS)
-#define RISCV_JUMP_REACH ((1ULL << RISCV_JUMP_BITS) * RISCV_JUMP_ALIGN)
-
-#define RISCV_IMM_BITS 12
-#define RISCV_BIGIMM_BITS (32 - RISCV_IMM_BITS)
-#define RISCV_IMM_REACH (1LL << RISCV_IMM_BITS)
-#define RISCV_BIGIMM_REACH (1LL << RISCV_BIGIMM_BITS)
-#define RISCV_RVC_IMM_REACH (1LL << 6)
-#define RISCV_BRANCH_BITS RISCV_IMM_BITS
-#define RISCV_BRANCH_ALIGN_BITS RISCV_JUMP_ALIGN_BITS
-#define RISCV_BRANCH_ALIGN (1 << RISCV_BRANCH_ALIGN_BITS)
-#define RISCV_BRANCH_REACH (RISCV_IMM_REACH * RISCV_BRANCH_ALIGN)
 
 /* Replace bits MASK << SHIFT of STRUCT with the equivalent bits in
    VALUE << SHIFT.  VALUE is evaluated exactly once.  */
