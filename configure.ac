@@ -227,12 +227,12 @@ AC_DEFUN([AX_ARG_WITH_SRC],
 	  m4_popdef([opt_name])
 	}])
 
-AX_ARG_WITH_SRC(gcc, riscv-gcc)
-AX_ARG_WITH_SRC(binutils, riscv-binutils)
+AX_ARG_WITH_SRC(gcc, gcc)
+AX_ARG_WITH_SRC(binutils, binutils)
 AX_ARG_WITH_SRC(newlib, newlib)
 AX_ARG_WITH_SRC(glibc, glibc)
 AX_ARG_WITH_SRC(musl, musl)
-AX_ARG_WITH_SRC(gdb, riscv-gdb)
+AX_ARG_WITH_SRC(gdb, gdb)
 AX_ARG_WITH_SRC(qemu, qemu)
 
 AC_ARG_WITH(linux-headers-src,
