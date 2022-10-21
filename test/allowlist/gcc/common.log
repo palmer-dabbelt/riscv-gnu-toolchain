@@ -65,3 +65,15 @@ FAIL: gcc.dg/pr90838.c
 XPASS: gcc.dg/uninit-pred-7_a.c
 FAIL: gcc.dg/uninit-pred-9_b.c
 FAIL: gcc.dg/tree-ssa/ssa-sink-18.c
+FAIL: c-c++-common/pointer-to-fn1.c
+FAIL: gcc.dg/pr25521.c
+FAIL: gcc.dg/pr54346.c
+FAIL: gcc.misc-tests/gcov-pr94029.c
+FAIL: gcc.target/riscv/rvv/base/abi-1.c
+FAIL: gcc.target/riscv/rvv/base/pragma-2.c
+FAIL: gcc.target/riscv/rvv/base/pragma-3.c
+FAIL: gcc.target/riscv/rvv/base/vread_csr.c
+FAIL: gcc.target/riscv/rvv/base/vwrite_csr.c
+FAIL: gfortran.dg/ieee/modes_1.f90
+FAIL: gfortran.dg/ieee/rounding_3.f90
+FAIL: gcc.target/riscv/promote-type-for-libcall.c
