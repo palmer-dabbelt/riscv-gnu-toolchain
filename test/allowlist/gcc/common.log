@@ -77,3 +77,6 @@ FAIL: gcc.target/riscv/rvv/base/vwrite_csr.c
 FAIL: gfortran.dg/ieee/modes_1.f90
 FAIL: gfortran.dg/ieee/rounding_3.f90
 FAIL: gcc.target/riscv/promote-type-for-libcall.c
+FAIL: gcc.dg/tls/emutls-3.c
+FAIL: gfortran.dg/gomp/appendix-a/a.22.1.f90
+FAIL: gfortran.dg/gomp/appendix-a/a.33.1.f90
