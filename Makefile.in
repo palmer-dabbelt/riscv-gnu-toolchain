@@ -354,7 +354,7 @@ endif
 		CXXFLAGS="$(CXXFLAGS_FOR_TARGET) -g -O2 $($@_CFLAGS)" \
 		ASFLAGS="$(ASFLAGS_FOR_TARGET) $($@_CFLAGS)" \
 		$</configure \
-		--host=$(call make_tuple,$($@_XLEN),linux-gnu) \
+		--host=riscv64-unknown-linux-gnu \
 		--prefix=/usr \
 		--disable-werror \
 		--enable-shared \
