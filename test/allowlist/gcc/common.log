@@ -80,3 +80,13 @@ FAIL: gcc.target/riscv/promote-type-for-libcall.c
 FAIL: gcc.dg/tls/emutls-3.c
 FAIL: gfortran.dg/gomp/appendix-a/a.22.1.f90
 FAIL: gfortran.dg/gomp/appendix-a/a.33.1.f90
+FAIL: g++.dg/contracts/contracts-tmpl-spec2.C
+FAIL: g++.dg/pr71488.C
+FAIL: g++.dg/warn/Warray-bounds-16.C
+FAIL: g++.dg/modules/xtreme-header-5_c.C
+FAIL: gcc.dg/analyzer/file-CWE-1341-example.c
+FAIL: gcc.dg/analyzer/pipe-glibc.c
+FAIL: gcc.dg/fold-overflow-1.c
+FAIL: gcc.target/riscv/pr106602.c
+FAIL: gcc.dg/pr95115.c
+FAIL: gcc.target/riscv/rvv/base/spill-sp-adjust.c

@@ -41,3 +41,7 @@
 #define __NR_riscv_flush_icache (__NR_arch_specific_syscall + 15)
 #endif
 __SYSCALL(__NR_riscv_flush_icache, sys_riscv_flush_icache)
+
+#ifndef __LP64__
+#define __NR_futex __NR_futex_time64
+#endif
