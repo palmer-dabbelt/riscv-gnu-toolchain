@@ -88,7 +88,7 @@ GDB_NATIVE_FLAGS := $(GDB_NATIVE_FLAGS_EXTRA)
 GLIBC_TARGET_FLAGS := $(GLIBC_TARGET_FLAGS_EXTRA)
 GLIBC_CC_FOR_TARGET ?= $(LINUX_TUPLE)-gcc
 GLIBC_CXX_FOR_TARGET ?= $(LINUX_TUPLE)-g++
-GLIBC_TARGET_BOARDS ?= $(shell echo "$(GLIBC_MULTILIB_NAMES)" | sed 's!\([_a-z0-9]*\)-\([_a-z0-9]*\)!riscv-sim/-march=\1/-mabi=\2/@cmodel@!g')
+GLIBC_TARGET_BOARDS ?= $(shell echo "$(GLIBC_MULTILIB_NAMES)" | sed 's!\([_a-z0-9]*\)-\([_a-z0-9]*\)!riscv-sim/-march=\1/-mabi=\2/@cmodel@!g') $(GLIBC_TARGET_BOARDS_EXTRA)
 
 NEWLIB_CC_FOR_TARGET ?= $(NEWLIB_TUPLE)-gcc
 NEWLIB_CXX_FOR_TARGET ?= $(NEWLIB_TUPLE)-g++
